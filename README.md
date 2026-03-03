@@ -68,8 +68,19 @@ AI assistant analyzes and answers questions about your traffic
 - **API:** Umami REST API
 - **Distribution:** Go binary, published to Glama.ai + LobeHub
 
+## My fixes
+
+This is a customized fork of [Macawls/umami-mcp-server](https://github.com/Macawls/umami-mcp-server) with the following improvements:
+
+- **Fixed Stats API response parsing** — Umami's API returns flat integers for stats, not nested `ValueChange` objects. The original struct deserialized incorrectly, returning zero values.
+- **Expanded metric types** — Added `path`, `title`, `query`, `channel`, `domain`, `region`, `city`, `language`, `screen` metric types (original only supported `url` + 6 others).
+
 ## What I learned
 
 - MCP is a natural fit for analytics — instead of building dashboards, just ask your AI "how's traffic this week?"
 - Go's single-binary distribution makes MCP servers trivially deployable — no runtime dependencies
 - Publishing to MCP registries (Glama.ai, LobeHub) gave the project discovery I wouldn't have gotten from GitHub alone
+
+## Credits
+
+Based on [Macawls/umami-mcp-server](https://github.com/Macawls/umami-mcp-server) — MIT License.
